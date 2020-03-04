@@ -12,31 +12,23 @@ $ npm install -g express-generator-typescript-react
 
 The quickest way to get started with express is to utilize the executable `express(1)` to generate an application as shown below:
 
-Create the app:
+Create the app, will install dependencies automatically:
 
 ```bash
-$ express --view=hbs /tmp/foo && cd /tmp/foo
-```
-
-Install dependencies:
-
-```bash
-$ npm install
+$ ergt my-app
 ```
 
 Start your Express.js app at `http://localhost:3000/`:
 
 ```bash
-$ npm start
+$ cd my-app && npm dev
 ```
 
 ## Command Line Options
 
 This generator can also be further configured with the following command line flags.
 
-    -V, --version        output the version number
         --with-auth      add authentication support
-    -h, --help           output usage information
 
 ## Why these packages
 
