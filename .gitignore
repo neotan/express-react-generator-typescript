@@ -1,0 +1,8 @@
+# IntelliJ project files
+*.iml
+.idea/
+
+
+# Misc
+**/node_modules
+**/package-lock.json

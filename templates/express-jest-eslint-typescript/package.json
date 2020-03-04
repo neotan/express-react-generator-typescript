@@ -1,0 +1,49 @@
+{
+  "name": "YOUR_PROJECT_NAME",
+  "version": "0.0.1",
+  "description": "An express project.",
+  "keywords": [
+    "express",
+    "TypeScript",
+    "jest",
+    "eslint",
+    "prettier",
+    "husky",
+    "node.js",
+    "nodejs",
+    "boilerplate",
+    "starter"
+  ],
+  "author": "YOUR_NAME",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOUR_GITHUB_ID/YOUR_REPO_NAME.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR_GITHUB_ID/YOUR_REPO_NAME/issues"
+  },
+  "homepage": "https://github.com/YOUR_GITHUB_ID/YOUR_REPO_NAME#readme",
+  "scripts": {
+    "build": "node ./util/build.js",
+    "dev": "nodemon --config nodemon.json",
+    "lint": "cross-env DEBUG=eslint:cli-engine eslint --fix --ext .ts --ext .js . && echo ---- Format & Lint complete ----",
+    "start": "node -r module-alias/register ./dist",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "_moduleAliases": {
+    "@daos": "dist/daos",
+    "@entities": "dist/entities",
+    "@shared": "dist/shared",
+    "@server": "dist/server"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test"
+    }
+  },
+  "jest": {
+    "testURL": "http://localhost/"
+  }
+}
