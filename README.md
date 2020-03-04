@@ -18,10 +18,10 @@ Create the app, will install dependencies automatically:
 $ ergt my-app
 ```
 
-Start your Express.js app at `http://localhost:3000/`:
+Start your Express.js app at `http://localhost:YOUR_PORT_NUMBER/`:
 
 ```bash
-$ cd my-app && npm dev
+$ cd my-app && npm run dev
 ```
 
 ## Command Line Options
