@@ -6,12 +6,13 @@ const options = commandLineArgs([
   {
     name: 'env',
     alias: 'e',
-    defaultValue: 'test',
+    defaultValue: process.env.NODE_ENV || 'test',
     type: String,
   },
 ])
 
 // Set the env file
+console.log('options.env', options.env)
 const result = dotenv.config({
   path: `./env/${options.env}.env`,
 })
