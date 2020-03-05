@@ -12,7 +12,6 @@ const options = commandLineArgs([
 ])
 
 // Set the env file
-console.log('options.env', options.env)
 const result = dotenv.config({
   path: `./env/${options.env}.env`,
 })
