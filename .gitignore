@@ -1,8 +1,8 @@
-# IntelliJ project files
 *.iml
-.idea/
-
-
-# Misc
-**/node_modules
-**/package-lock.json
+.idea
+.vscode
+.DS_Store
+node_modules
+npm-debug.log
+dist
+coverage

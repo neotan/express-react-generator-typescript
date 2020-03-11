@@ -1,0 +1,75 @@
+{
+  "name": "your_project_name",
+  "version": "0.0.1",
+  "description": "An express project.",
+  "keywords": [
+    "express",
+    "jest",
+    "eslint",
+    "prettier",
+    "husky",
+    "node.js",
+    "nodejs",
+    "boilerplate",
+    "starter"
+  ],
+  "author": "YOUR_NAME",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOUR_GITHUB_ID/YOUR_REPO_NAME.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR_GITHUB_ID/YOUR_REPO_NAME/issues"
+  },
+  "homepage": "https://github.com/YOUR_GITHUB_ID/YOUR_REPO_NAME#readme",
+  "scripts": {
+    "dev": "nodemon --config nodemon.json",
+    "lint": "cross-env DEBUG=eslint:cli-engine eslint --fix --ext .js .",
+    "start": "node src/server.js",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "_moduleAliases": {
+    "~daos": "src/daos",
+    "~entities": "src/entities",
+    "~shared": "src/shared",
+    "~server": "src/server.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test"
+    }
+  },
+  "jest": {
+    "testURL": "http://localhost/"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "command-line-args": "^5.1.1",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http-status-codes": "^1.4.0",
+    "module-alias": "^2.2.2",
+    "morgan": "^1.9.1",
+    "ramda": "^0.27.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "find": "^0.3.0",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "jsonfile": "^6.0.1",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1",
+    "supertest": "^4.0.2"
+  }
+}

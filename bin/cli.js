@@ -5,19 +5,19 @@ const expressGenTs = require('../lib/generator')
 
 let destination
 let appName = 'my-app'
-let withAuth = false
-if (process.argv[2] === '--with-auth') {
+let withTs = false
+if (process.argv[2] === '-ts') {
   appName = process.argv[3] || appName
-  withAuth = true
-  destination = getDest(process.argv[3])
+  withTs = true
+  destination = getDest(appName)
 } else {
   appName = process.argv[2] || appName
-  destination = getDest(process.argv[2])
+  destination = getDest(appName)
 }
 
-console.log('Setting up new Express/TypeScript project...')
+console.log('Setting up new Express project...')
 
-expressGenTs(destination, withAuth).then(() => {
+expressGenTs(destination, withTs).then(() => {
   console.log(`
   Project setup complete!
   Please run 'cd ${appName} && npm run dev' to start your application.
@@ -25,6 +25,6 @@ expressGenTs(destination, withAuth).then(() => {
 })
 
 function getDest(destFolder) {
-  destFolder = destFolder || 'express-ts-prj'
+  destFolder = destFolder || appName
   return path.join(process.cwd(), destFolder)
 }
