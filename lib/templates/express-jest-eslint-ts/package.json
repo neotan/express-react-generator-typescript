@@ -1,5 +1,5 @@
 {
-  "name": "your_project_name",
+  "name": "your_app_name",
   "version": "0.0.1",
   "description": "An express project.",
   "keywords": [
@@ -28,7 +28,7 @@
     "build": "node ./util/build.js",
     "dev": "nodemon --config nodemon.json",
     "lint": "cross-env DEBUG=eslint:cli-engine eslint --fix --ext .ts --ext .js .",
-    "start": "node -r module-alias/register ./dist",
+    "start": "node ./dist",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },

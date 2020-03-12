@@ -1,5 +1,5 @@
 {
-  "name": "your_project_name",
+  "name": "your_app_name",
   "version": "0.0.1",
   "description": "An express project.",
   "keywords": [
@@ -26,15 +26,9 @@
   "scripts": {
     "dev": "nodemon --config nodemon.json",
     "lint": "cross-env DEBUG=eslint:cli-engine eslint --fix --ext .js .",
-    "start": "node src/server.js",
+    "start": "cross-env NODE_ENV=production node ./src",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
-  },
-  "_moduleAliases": {
-    "~daos": "src/daos",
-    "~entities": "src/entities",
-    "~shared": "src/shared",
-    "~server": "src/server.js"
   },
   "husky": {
     "hooks": {
@@ -53,7 +47,6 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "http-status-codes": "^1.4.0",
-    "module-alias": "^2.2.2",
     "morgan": "^1.9.1",
     "ramda": "^0.27.0",
     "winston": "^3.2.1"

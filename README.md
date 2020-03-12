@@ -48,8 +48,6 @@ This generator can also be further configured with the following command line fl
     Watching files changes then live reloading
 1. ### husky
     Auto-triggering test and lint before Git commit/push
-1. ### module-alias
-    Flatting the code base structure, for easier module referring, i.e. you don't have to code `import {module1, module2} from '../../../shared'`, just import designate alias `import {module1, module2} from '~shared'`
 
 ## Credit
 [Sean Maxwell](https://github.com/seanpmaxwell/express-generator-typescript)
