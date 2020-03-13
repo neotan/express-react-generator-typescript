@@ -20,7 +20,7 @@ console.log('Setting up new Express project...')
 expressGenTs(destination, withTs).then(() => {
   console.log(`
   Project setup complete!
-  Please run 'cd ${appName} && npm run dev' to start your application.
+  Please run 'cd ${appName} && npm i && npm run dev' to start your application.
   `)
 })
 
