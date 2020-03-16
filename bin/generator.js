@@ -8,7 +8,6 @@ async function genProject(destination, withTs) {
   try {
     await copyProjectFiles(destination, withTs)
     updatePackageJson(destination)
-    // downloadNodeModules(destination, dep)
   } catch (err) {
     console.error(err)
   }
