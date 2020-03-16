@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const path = require('path')
-const expressGenTs = require('../lib/generator')
+const expressGenTs = require('./generator')
 
 let destination
 let appName = 'my-app'

@@ -4,13 +4,10 @@ const editJsonFile = require('edit-json-file')
 const childProcess = require('child_process')
 const ncp = require('ncp').ncp
 
-const { express_es6, express_ts } = require('./config')
-
 async function genProject(destination, withTs) {
   try {
     await copyProjectFiles(destination, withTs)
     updatePackageJson(destination)
-    // const dep = getDepStrings(withTs)
     // downloadNodeModules(destination, dep)
   } catch (err) {
     console.error(err)
@@ -38,7 +35,7 @@ const filter = ignoredFileRegexes => pathFileName => {
 }
 
 function copyProjectFiles(destination, withTs) {
-  const prjFolder = withTs ? './templates/express-jest-eslint-ts' : './templates/express-jest-eslint-es6'
+  const prjFolder = withTs ? '../templates/express-jest-eslint-ts' : '../templates/express-jest-eslint-es6'
   const source = path.join(__dirname, prjFolder)
   const ignoreFileRegexes = getIgnoredFileRegexes()
 
@@ -60,26 +57,10 @@ function updatePackageJson(destination) {
   file.set('name', path.basename(destination))
 }
 
-function getDepStrings(withTs) {
-  let deps = express_es6.pkgJson.dependencies
-  let devDeps = express_es6.pkgJson.devDependencies
-
-  if (withTs) {
-    deps = deps.concat(express_ts.pkgJson.dependencies)
-    devDeps = devDeps.concat(express_ts.pkgJson.devDependencies)
-  }
-
-  deps = deps.join(' ')
-  devDeps = devDeps.join(' ')
-
-  console.log({ withTs, deps, devDeps })
-  return { dependencies: deps, devDependencies: devDeps }
-}
-
 function downloadNodeModules(destination, dep) {
   console.log('Executing `npm install`...')
   const options = { cwd: destination }
-  childProcess.execSync('npm i -P ' + dep.dependencies, options)
+  childProcess.execSync('npm i ' + dep.dependencies, options)
   childProcess.execSync('npm i -D ' + dep.devDependencies, options)
 }
 

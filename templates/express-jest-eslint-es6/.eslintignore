@@ -1,0 +1,7 @@
+dist
+env
+lib
+coverage
+node_modules
+src/public
+
