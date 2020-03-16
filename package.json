@@ -50,7 +50,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run --prefix ./templates/express-jest-eslint-es61 lint && npm run --prefix ./templates/express-jest-eslint-ts lint"
+      "pre-commit": "npm run --prefix ./templates/express-jest-eslint-es6 lint && npm run --prefix ./templates/express-jest-eslint-ts lint"
     }
   },
   "devDependencies": {
