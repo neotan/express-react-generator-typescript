@@ -5,5 +5,5 @@
     "NODE_ENV": "development"
   },
   "ignore": ["src/public"],
-  "exec": "node ./src"
+  "exec": "node --inspect ./src"
 }

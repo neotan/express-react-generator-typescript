@@ -44,14 +44,19 @@
     "start": "node bin/cli.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "edit-json-file": "^1.3.2",
-    "ncp": "^2.0.0"
-  },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run --prefix ./templates/express-jest-eslint-es6 lint && npm run --prefix ./templates/express-jest-eslint-ts lint"
+      "pre-commit": "npm run --prefix lib/templates/express-jest-eslint-es6 lint && npm run --prefix lib/templates/express-jest-eslint-ts lint"
     }
+  },
+  "dependencies": {
+    "commander": "^5.0.0",
+    "copyfiles": "^2.2.0",
+    "edit-json-file": "^1.3.2",
+    "glob": "^7.1.6",
+    "ignore": "^5.1.4",
+    "ncp": "^2.0.0",
+    "yesno": "^0.3.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
