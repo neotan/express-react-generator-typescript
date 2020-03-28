@@ -1,34 +1,39 @@
-# express-generator-typescript-react
-Express' application generator, with TypeScript, Jest, ESLint and optional GraphQL and React support, which's inspired by [Sean Maxwell's express-generator-typescript](https://github.com/seanpmaxwell/express-generator-typescript) as starting point.
+# express-react-generator-typescript
+Express' application generator, with TypeScript, Jest, ESLint and optional GraphQL and React support, which's inspired by [Sean Maxwell's express-generator-typescript](https://www.npmjs.com/package/express-generator-typescript).
 
 
 ## Installation
 
 ```sh
-$ npm install -g express-generator-typescript-react
+$ npm install -g express-react-generator-typescript
 ```
 
 ## Quick Start
 
-The quickest way to get started with express is to utilize the executable `express(1)` to generate an application as shown below:
-
-Create the app, will install dependencies automatically:
+Create the app:
 
 ```bash
 $ ergt my-app
+
+// Or add TypeScript support
+
+$ ergt -t my-app
+
 ```
 
-Start your Express.js app at `http://localhost:YOUR_PORT_NUMBER/`:
+Start your app at `http://localhost:5555/`:
 
 ```bash
-$ cd my-app && npm run dev
+$ cd my-app && npm i && npm run dev
 ```
 
 ## Command Line Options
 
 This generator can also be further configured with the following command line flags.
 
-        --with-auth      add authentication support
+        -V  --version         output the current version
+        -t  --typescript      add TypeScript support
+        -f  --force           force on non-empty directory
 
 ## Why these packages
 
@@ -47,7 +52,8 @@ This generator can also be further configured with the following command line fl
 1. ### nodemon
     Watching files changes then live reloading
 1. ### husky
-    Auto-triggering test and lint before Git commit/push
+    Automatically test and lint before Git commit/push
 
 ## Credit
-[Sean Maxwell](https://github.com/seanpmaxwell/express-generator-typescript)
+* [express-generator-typescript by Sean Maxwell](https://www.npmjs.com/package/express-generator-typescript)
+* [express-generator](https://www.npmjs.com/package/express-generator)
