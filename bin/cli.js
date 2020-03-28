@@ -4,12 +4,11 @@ const path = require('path')
 const yesno = require('yesno')
 const program = require('commander')
 const chalk = require('chalk')
+const symbols = require('log-symbols')
 const {version: VERSION, name: NAME} = require('../package')
-const {around, before, createAppName, copyTemplateFiles, updateAppNameToPkgJson, isEmpty} = require('./util')
+const {around, before, createAppName, copyTemplateFiles, updateAppNameToPkgJson, isEmpty, updatePackages} = require('./util')
 
-;(async function createProject() {
-  console.log(chalk.green('Setting up new Express project...'))
-
+;(async function () {
   try {
     around(program, 'optionMissingArgument', function (wrappedFn, args) {
       program.outputHelp()
@@ -40,7 +39,7 @@ const {around, before, createAppName, copyTemplateFiles, updateAppNameToPkgJson,
          or shorthanded:
          ergt [options] [dir]`,
       )
-      .option('-t, --ts', 'add TypeScript support')
+      .option('-t, --typescript', 'add TypeScript support')
       .option('-f, --force', 'force on non-empty directory')
       .parse(process.argv)
 
@@ -50,6 +49,7 @@ const {around, before, createAppName, copyTemplateFiles, updateAppNameToPkgJson,
 
     // app name
     const appName = createAppName(destPath) || 'express-app'
+    console.log(chalk.green('Setting up new Express project...'))
 
     if (await isEmpty(destPath) || program.force) {
       await copyTemplateFiles(destPath, program.ts)
@@ -69,8 +69,22 @@ const {around, before, createAppName, copyTemplateFiles, updateAppNameToPkgJson,
     }
     updateAppNameToPkgJson(destPath, appName)
 
-    console.log(chalk.green(`Project setup complete!\nPlease run ${chalk.yellow(`cd ${inputPath} && npm i && npm run dev`)} to start your application.`))
+    console.log(chalk.green('Checking for latest package versions...'))
+    const ok = await yesno({
+      question: `
+        \n${JSON.stringify(await updatePackages(destPath), null, 2)}
+        \nDo you want to update these packages to listed latest versions? [y/N] `,
+    })
+
+    if (ok) {
+      console.log(chalk.green('Updating package.json...'))
+      await updatePackages(destPath, true)
+      console.log(symbols.success, chalk.green('Updated package.json'))
+    }
+
+    console.log(symbols.success, chalk.green('Project setup complete!' +
+      `\n\nPlease run ${chalk.yellow(`cd ${inputPath} && npm i && npm run dev`)} to start your application.`))
   } catch (err) {
-    console.error(chalk.yellow(err))
+    console.error(chalk.redBright(err))
   }
 })()

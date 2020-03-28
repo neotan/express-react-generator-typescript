@@ -3,7 +3,9 @@ const fs = require('fs')
 const util = require('util')
 const editJsonFile = require('edit-json-file')
 const ncp = require('ncp').ncp
+const ncu = require('npm-check-updates')
 const ignore = require('ignore')
+const yesno = require('yesno')
 
 function around(obj, wrappedFnName, cb) {
   const wrappedFn = obj[wrappedFnName]
@@ -68,9 +70,22 @@ function copyFiles(srcPath, destPath) {
 
 }
 
-function updateAppNameToPkgJson(destination, appName) {
-  const file = editJsonFile(path.resolve(destination, 'package.json'), {autosave: true})
-  file.set('name',appName)
+function updateAppNameToPkgJson(destPath, appName) {
+  const file = editJsonFile(path.resolve(destPath, 'package.json'), {autosave: true})
+  file.set('name', appName)
+}
+
+
+function updatePackages(destPath, write) {
+  const packageFile = path.resolve(destPath, 'package.json')
+  const options = {
+    upgrade: write,
+    jsonUpgraded: true,
+    packageManager: 'npm',
+    silent: false,
+    packageFile,
+  }
+  return ncu.run(options)
 }
 
 function isEmpty(destPath) {
@@ -89,5 +104,6 @@ module.exports = {
   getIgnoredFilePatterns,
   copyFiles,
   updateAppNameToPkgJson,
+  updatePackages,
   isEmpty,
 }
