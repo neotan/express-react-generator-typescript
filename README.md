@@ -37,21 +37,21 @@ This generator can also be further configured with the following command line fl
 
 ## Why these packages
 
-1. ### express 
+1. **express** 
     1. **ts-node**: Running `.ts` files directly
-1. ### typescript
+1. **typescript**
     1. **eslint**
         1. [TSLint will be replaced by ESLint`](https://github.com/palantir/tslint/issues/4534)
         1. Formatting codes with **prettier** together
             >Didn't use **prettier-eslint** as it doesn't work well with ESLint+Typescript
     1. **prettier**: The most popular code formatter
     1. **reflect-metadata**: Supporting Decorator
-1. ### jest
+1. **jest**
     1. **ts-jest**: Running `.test.ts` files directly
     1. **supertest**: Testing API endpoints
-1. ### nodemon
+1. **nodemon**
     Watching files changes then live reloading
-1. ### husky
+1. **husky**
     Automatically test and lint before Git commit/push
 
 ## Credit
