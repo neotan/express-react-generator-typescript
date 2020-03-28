@@ -1,6 +1,6 @@
-# express-react-generator-typescript
-Express' application generator, with TypeScript, Jest, ESLint and optional GraphQL and React support, which's inspired by [Sean Maxwell's express-generator-typescript](https://www.npmjs.com/package/express-generator-typescript).
 
+# express-react-generator-typescript
+Express application generator, with TypeScript, Jest, ESLint and optionally React support, which's inspired by [Sean Maxwell's express-generator-typescript](https://www.npmjs.com/package/express-generator-typescript).
 
 ## Installation
 
@@ -57,3 +57,4 @@ This generator can also be further configured with the following command line fl
 ## Credit
 * [express-generator-typescript by Sean Maxwell](https://www.npmjs.com/package/express-generator-typescript)
 * [express-generator](https://www.npmjs.com/package/express-generator)
+
