@@ -2,7 +2,7 @@ const { logger } = require('./logger')
 
 const paramMissingError = 'One or more of the required parameters was missing.'
 
-const pErr = err => {
+const printErr = err => {
   if (err) {
     logger.error(err)
   }
@@ -15,6 +15,6 @@ const getRandomInt = () => {
 
 module.exports = {
   paramMissingError,
-  pErr,
+  printErr,
   getRandomInt,
 }

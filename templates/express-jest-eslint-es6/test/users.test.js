@@ -3,7 +3,7 @@ const { BAD_REQUEST, CREATED, OK } = require('http-status-codes')
 const app = require('../src/server')
 const { User } = require('../src/entities')
 const { UserDao } = require('../src/daos')
-const { paramMissingError, pErr } = require('../src/shared')
+const { paramMissingError, printErr } = require('../src/shared')
 
 describe('Users Routes', () => {
   const usersPath = '/api/users'
@@ -31,7 +31,7 @@ describe('Users Routes', () => {
       spyOn(UserDao.prototype, 'getAll').and.returnValue(Promise.resolve(users))
 
       agent.get(getUsersPath).end((err, res) => {
-        pErr(err)
+        printErr(err)
         expect(res.status).toBe(OK)
         // Caste instance-objects to 'User' objects
         const retUsers = res.body.users.map(user => {
@@ -49,7 +49,7 @@ describe('Users Routes', () => {
       spyOn(UserDao.prototype, 'getAll').and.throwError(errMsg)
 
       agent.get(getUsersPath).end((err, res) => {
-        pErr(err)
+        printErr(err)
         expect(res.status).toBe(BAD_REQUEST)
         expect(res.body.error).toBe(errMsg)
         done()
@@ -77,7 +77,7 @@ describe('Users Routes', () => {
         .type('form')
         .send(userData) // pick up here
         .end((err, res) => {
-          pErr(err)
+          printErr(err)
           expect(res.status).toBe(CREATED)
           expect(res.body.error).toBeUndefined()
           done()
@@ -87,7 +87,7 @@ describe('Users Routes', () => {
     it(`should return a JSON object with an error message of "${paramMissingError}" and a status
             code of "${BAD_REQUEST}" if the user param was missing.`, done => {
       callApi({}).end((err, res) => {
-        pErr(err)
+        printErr(err)
         expect(res.status).toBe(BAD_REQUEST)
         expect(res.body.error).toBe(paramMissingError)
         done()
@@ -100,7 +100,7 @@ describe('Users Routes', () => {
       spyOn(UserDao.prototype, 'add').and.throwError(errMsg)
 
       callApi(userData).end((err, res) => {
-        pErr(err)
+        printErr(err)
         expect(res.status).toBe(BAD_REQUEST)
         expect(res.body.error).toBe(errMsg)
         done()
@@ -124,7 +124,7 @@ describe('Users Routes', () => {
       spyOn(UserDao.prototype, 'update').and.returnValue(Promise.resolve())
 
       callApi(userData).end((err, res) => {
-        pErr(err)
+        printErr(err)
         expect(res.status).toBe(OK)
         expect(res.body.error).toBeUndefined()
         done()
@@ -134,7 +134,7 @@ describe('Users Routes', () => {
     it(`should return a JSON object with an error message of "${paramMissingError}" and a
             status code of "${BAD_REQUEST}" if the user param was missing.`, done => {
       callApi({}).end((err, res) => {
-        pErr(err)
+        printErr(err)
         expect(res.status).toBe(BAD_REQUEST)
         expect(res.body.error).toBe(paramMissingError)
         done()
@@ -147,7 +147,7 @@ describe('Users Routes', () => {
       spyOn(UserDao.prototype, 'update').and.throwError(updateErrMsg)
 
       callApi(userData).end((err, res) => {
-        pErr(err)
+        printErr(err)
         expect(res.status).toBe(BAD_REQUEST)
         expect(res.body.error).toBe(updateErrMsg)
         done()
@@ -164,7 +164,7 @@ describe('Users Routes', () => {
       spyOn(UserDao.prototype, 'delete').and.returnValue(Promise.resolve())
 
       callApi(5).end((err, res) => {
-        pErr(err)
+        printErr(err)
         expect(res.status).toBe(OK)
         expect(res.body.error).toBeUndefined()
         done()
@@ -177,7 +177,7 @@ describe('Users Routes', () => {
       spyOn(UserDao.prototype, 'delete').and.throwError(deleteErrMsg)
 
       callApi(1).end((err, res) => {
-        pErr(err)
+        printErr(err)
         expect(res.status).toBe(BAD_REQUEST)
         expect(res.body.error).toBe(deleteErrMsg)
         done()
