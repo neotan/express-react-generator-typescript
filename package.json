@@ -50,7 +50,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "run-s -ln lint:express-es6 test:express-ts lint:express-es6 test:express-ts"
+      "pre-commit": "run-s -n lint:express-es6 test:express-ts lint:express-es6 test:express-ts"
     }
   },
   "dependencies": {
