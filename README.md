@@ -1,6 +1,6 @@
 
 # express-react-generator-typescript
-Express application generator, with TypeScript, Jest, ESLint and optionally React support, which's inspired by [Sean Maxwell's express-generator-typescript](https://www.npmjs.com/package/express-generator-typescript).
+Express application CLI generator, with TypeScript, Jest, ESLint and optionally React support, which's inspired by [Sean Maxwell's express-generator-typescript](https://www.npmjs.com/package/express-generator-typescript).
 
 ## Installation
 
@@ -53,6 +53,10 @@ This generator can also be further configured with the following command line fl
     Watching files changes then live reloading
 1. **husky**
     Automatically test and lint before Git commit/push
+
+## Todo
+* [x] Support `Express` + `TypeScript` project generation 
+* [ ] Support `React` project generation
 
 ## Credit
 * [express-generator-typescript by Sean Maxwell](https://www.npmjs.com/package/express-generator-typescript)

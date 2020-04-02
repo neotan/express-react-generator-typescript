@@ -1,7 +1,7 @@
 {
   "name": "express-react-generator-typescript",
-  "version": "0.0.1",
-  "description": "Generate new Express (and React optionally) applications, similar to express-generator which but sets it up to use TypeScript instead",
+  "version": "0.0.2",
+  "description": "Express application CLI generator, with TypeScript, Jest, ESLint and optionally React support, which's inspired by [Sean Maxwell's express-generator-typescript](https://www.npmjs.com/package/express-generator-typescript).",
   "keywords": [
     "express",
     "ex",
@@ -42,11 +42,15 @@
   "scripts": {
     "express-react-generator-typescript": "node bin/cli.js",
     "start": "node bin/cli.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:express-es6": "npm run --prefix templates/express-jest-eslint-es6 lint",
+    "test:express-es6": "npm run --prefix templates/express-jest-eslint-es6 test",
+    "lint:express-ts": "npm run --prefix templates/express-jest-eslint-ts lint",
+    "test:express-ts": "npm run --prefix templates/express-jest-eslint-ts test"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run --prefix templates/express-jest-eslint-es6 lint && npm run --prefix templates/express-jest-eslint-ts lint"
+      "pre-commit": "run-s -ln lint:express-es6 test:express-ts lint:express-es6 test:express-ts"
     }
   },
   "dependencies": {
@@ -66,6 +70,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.3",
     "npm-check-updates": "^4.0.4",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1"
   }
 }
