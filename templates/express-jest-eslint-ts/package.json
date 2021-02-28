@@ -52,7 +52,7 @@
     "morgan": "^1.9.1",
     "ramda": "^0.27.0",
     "reflect-metadata": "^0.1.13",
-    "winston": "^3.2.1"
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@types/command-line-args": "^5.0.0",
